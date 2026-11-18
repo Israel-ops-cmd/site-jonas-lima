@@ -25,7 +25,7 @@ Abra http://localhost:3000 (serve) ou http://localhost:8080 (python). Abrir o ar
 1. GitHub: crie o repositório `site-jonas-lima` e faça push na branch `main`.
 2. Vercel: Add New > Project > importe o repositório. Framework Preset: Other. Build Command: vazio. Output Directory: `./`.
 3. Cada push em `main` publica sozinho.
-4. Quando tiver a URL final, troque `https://site-jonas-lima.vercel.app/` no `<link rel="canonical">`, nas tags og:/twitter: e no JSON-LD do `index.html`.
+4. URL atual: https://site-jonas-lima.vercel.app/ (já usada no canonical, nas tags og:/twitter: e no JSON-LD). Ao ligar um domínio próprio, troque essa URL nesses três lugares.
 
 ## Trocar fotos
 
