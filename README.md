@@ -18,6 +18,7 @@ Abra http://localhost:3000 (serve) ou http://localhost:8080 (python). Abrir o ar
 - `img/`: fotos em .webp (800 e 1600px; recortes em 700 e 1200px)
 - `vendor/`: gsap.min.js, ScrollTrigger.min.js, lenis.min.js
 - `favicon.svg`, `apple-touch-icon.png`, `og-image.jpg` (1200x630, preview no WhatsApp)
+- `logo/`: logo do Espaço JL redesenhada em vetor a partir da arte do cliente (símbolo, logo completa e versão negativa). Trocar pelo arquivo original quando ele enviar.
 - `vercel.json`: cleanUrls e cache longo para /img e /vendor
 
 ## Publicar

@@ -66,7 +66,7 @@
 
 <style>
 :root{
-  --forest:#1B4334; --paper:#F3F1EB; --sage:#DEE0C8; --emerald:#00A878; --ink:#16211C; --deep:#03241A; --teal:#0E6E60;
+  --forest:#0F4A30; --paper:#F3F1EB; --sage:#DEE0C8; --emerald:#0E8984; --ink:#16211C; --deep:#03241A; --teal:#0E8984; --leaf:#0E5A34; --aqua:#4FC7BC;
   --ease:cubic-bezier(.16,1,.3,1); --d1:.6s; --d2:.9s; --d3:1.2s;
   --gutter:clamp(1rem,4vw,3.5rem); --maxw:1320px;
   --fs-h1:clamp(2.6rem,6.4vw,5.6rem); --fs-h2:clamp(2.2rem,5vw,4.4rem); --fs-h3:clamp(1.35rem,2vw,1.75rem);
@@ -89,11 +89,9 @@ h1{font-size:var(--fs-h1)}
 h2{font-size:var(--fs-h2)}
 h3{font-size:var(--fs-h3);font-weight:460;line-height:1.1;letter-spacing:-.01em}
 h1 em,h2 em,h3 em,.display em{font-style:italic;font-weight:520;color:var(--emerald);font-stretch:100%}
-.is-dark h1 em,.is-dark h2 em{color:#3fd3a2}
+.is-dark h1 em,.is-dark h2 em{color:#4FC7BC}
 p{margin:0 0 1em}
 .lead{font-size:clamp(1.125rem,1.4vw,1.3rem);max-width:36ch}
-/* pendências com o cliente ficam marcadas no HTML com a classe .confirmar e escondidas no ar */
-.confirmar{display:none}
 
 /* grão */
 .grain{position:fixed;inset:-50%;pointer-events:none;z-index:60;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:multiply}
@@ -118,9 +116,11 @@ p{margin:0 0 1em}
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:transform var(--d1) var(--ease),background-color var(--d1) var(--ease)}
 .nav.is-solid{background:rgba(243,241,235,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .nav.is-hidden{transform:translateY(-110%)}
-.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;font-family:Archivo,sans-serif;font-stretch:112%;font-weight:520;font-size:1.15rem;letter-spacing:-.01em;color:var(--ink);min-height:44px}
-.brand .spine{color:var(--emerald);gap:3px}
-.brand .spine i:nth-child(1){width:7px;height:7px}.brand .spine i:nth-child(2){width:6px;height:6px}.brand .spine i:nth-child(3){width:5px;height:5px}.brand .spine i:nth-child(4){width:4px;height:4px}.brand .spine i:nth-child(5){width:3px;height:3px}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--leaf);min-height:44px}
+.brand-mark{width:44px;height:43px;flex:none}
+.brand-txt{display:flex;flex-direction:column;gap:5px}
+.brand-word{width:118px;height:14px;display:block}
+.brand-sub{font-family:Figtree,sans-serif;font-size:.82rem;line-height:1;color:var(--teal);letter-spacing:.01em}
 .nav ul{display:flex;gap:1.8rem;list-style:none;margin:0;padding:0}
 .nav ul a{text-decoration:none;font-weight:500;font-size:1rem;display:inline-flex;min-height:44px;align-items:center}
 .nav .btn{min-height:46px;padding:.6em 1.2em;font-size:.95rem}
@@ -135,10 +135,10 @@ p{margin:0 0 1em}
 .mobile-menu .btn{margin-top:2rem;font-family:Figtree,sans-serif;font-size:1rem;align-self:flex-start}
 
 /* abertura */
-.intro{position:fixed;inset:0;z-index:100;background:var(--deep);color:#fff;display:grid;place-items:center}
-.intro svg{width:min(42vw,220px);height:auto;overflow:visible}
-.intro .intro-name{position:absolute;left:0;right:0;bottom:22vh;text-align:center;font-family:Archivo,sans-serif;font-stretch:118%;font-weight:300;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.02em;opacity:0}
-.intro .intro-name small{display:block;font-family:Figtree,sans-serif;font-size:1rem;letter-spacing:.02em;color:#3fd3a2;margin-top:.4rem;font-weight:500}
+.intro{position:fixed;inset:0;z-index:100;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(1.2rem,3vh,2rem)}
+.intro-mark{width:min(46vw,230px);height:auto;overflow:visible}
+.intro-word{width:min(70vw,340px);height:auto;overflow:visible}
+.intro .intro-name{font-family:Figtree,sans-serif;font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--teal);letter-spacing:.01em;margin-top:-.6rem;opacity:0}
 .no-intro .intro{display:none}
 
 /* hero */
@@ -190,7 +190,7 @@ section{position:relative}
 .manifesto blockquote{margin:0;font-family:Archivo,sans-serif;font-stretch:115%;font-weight:330;font-size:clamp(2.1rem,5.4vw,5rem);line-height:1.04;letter-spacing:-.025em;max-width:18ch}
 .manifesto blockquote .w{color:rgba(238,242,236,.18);transition:none}
 .manifesto cite{display:flex;align-items:center;gap:.8rem;margin-top:2.5rem;font-style:normal;font-size:1.05rem;color:#9fb5a9}
-.manifesto cite .spine{color:#3fd3a2;flex-direction:row;align-items:center}
+.manifesto cite .spine{color:#4FC7BC;flex-direction:row;align-items:center}
 
 /* método */
 .metodo-intro{display:grid;grid-template-columns:1fr 1fr;gap:2rem 5rem;align-items:start;margin-bottom:4rem}
@@ -202,14 +202,14 @@ section{position:relative}
 .card-num{font-family:Archivo,sans-serif;font-stretch:125%;font-weight:200;font-size:clamp(4rem,9vw,8rem);line-height:.8;letter-spacing:-.05em;color:var(--emerald)}
 .card h3{font-size:clamp(1.8rem,3vw,2.6rem);margin:1.2rem 0 .3rem}
 .card .tag{font-size:1.05rem;font-weight:600;color:var(--teal);margin-bottom:1rem}
-.card:nth-child(3) .tag{color:#3fd3a2}
+.card:nth-child(3) .tag{color:#4FC7BC}
 .card-body{display:flex;flex-direction:column;justify-content:space-between}
 .card-progress{display:flex;gap:8px;align-items:center;margin-top:1.5rem}
 .card-progress i{width:10px;height:10px;border-radius:50%;border:1.5px solid currentColor;opacity:.5}
 .card-progress i.on{background:var(--emerald);border-color:var(--emerald);opacity:1}
 .card-media{border-radius:20px;overflow:hidden;min-height:260px;position:relative}
 .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.card-media--shape{background:var(--deep);display:grid;place-items:center;color:#3fd3a2}
+.card-media--shape{background:var(--deep);display:grid;place-items:center;color:#4FC7BC}
 .card-media--shape .spine{gap:12px}
 .card-media--shape .spine i:nth-child(1){width:40px;height:40px}.card-media--shape .spine i:nth-child(2){width:32px;height:32px}.card-media--shape .spine i:nth-child(3){width:25px;height:25px}.card-media--shape .spine i:nth-child(4){width:19px;height:19px}.card-media--shape .spine i:nth-child(5){width:14px;height:14px}
 .card:nth-child(2) .card-media--shape{background:var(--forest)}
@@ -228,7 +228,7 @@ section{position:relative}
 .tile--photo .tile-cap{position:relative;padding:1.8rem;background:linear-gradient(180deg,transparent,rgba(3,36,26,.88))}
 .tile--sage{background:var(--sage)}
 .tile--forest{background:var(--forest);color:#EEF2EC}
-.tile--forest .ico{stroke:#3fd3a2}
+.tile--forest .ico{stroke:#4FC7BC}
 .tile--deep{background:var(--deep);color:#EEF2EC}
 .t-3{grid-column:span 3}.t-2{grid-column:span 2}.t-4{grid-column:span 4}.r-2{grid-row:span 2}
 
@@ -291,7 +291,7 @@ section{position:relative}
 .mentoria figure img{width:100%;height:100%;object-fit:cover}
 .checks{list-style:none;padding:0;margin:1.8rem 0 2.4rem;display:grid;gap:.7rem}
 .checks li{display:flex;gap:.8rem;align-items:flex-start}
-.checks svg{width:22px;height:22px;flex:none;stroke:#3fd3a2;fill:none;stroke-width:1.5;margin-top:.2rem}
+.checks svg{width:22px;height:22px;flex:none;stroke:#4FC7BC;fill:none;stroke-width:1.5;margin-top:.2rem}
 
 /* unidades */
 .unidades{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -306,7 +306,7 @@ section{position:relative}
 /* cta final */
 .final{min-height:90vh;display:flex;align-items:center;text-align:left}
 .final h2{font-size:clamp(2.6rem,6.6vw,6rem);max-width:15ch;margin-bottom:2.4rem}
-.final .spine{position:absolute;right:var(--gutter);top:50%;transform:translateY(-50%);color:#3fd3a2;gap:16px}
+.final .spine{position:absolute;right:var(--gutter);top:50%;transform:translateY(-50%);color:#4FC7BC;gap:16px}
 .final .spine i:nth-child(1){width:44px;height:44px}.final .spine i:nth-child(2){width:36px;height:36px}.final .spine i:nth-child(3){width:28px;height:28px}.final .spine i:nth-child(4){width:21px;height:21px}.final .spine i:nth-child(5){width:15px;height:15px}
 
 /* rodapé */
@@ -314,6 +314,8 @@ footer.site{padding:4rem 0 7rem;font-size:1rem;color:#c7d5cd}
 footer.site .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2rem}
 footer.site h4{font-family:Archivo,sans-serif;font-stretch:112%;font-weight:450;font-size:1.25rem;color:#fff;margin:0 0 .8rem}
 footer.site p{margin:0 0 .5rem}
+footer.site .foot-logo{width:min(100%,300px);height:auto;display:block;margin-bottom:.4rem;--mk-a:#4FC7BC;--mk-b:#F3F1EB;--mk-w:#F3F1EB}
+footer.site .foot-sub{color:#4FC7BC;margin-bottom:1rem}
 footer.site a{display:inline-flex;min-height:44px;align-items:center}
 footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem;font-size:.95rem;color:#9fb5a9}
 
@@ -384,21 +386,15 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
 <div class="grain" aria-hidden="true"></div>
 <div class="cursor" aria-hidden="true"></div>
 
-<!-- Abertura: a coluna se alinha -->
+<!-- Abertura: a logo do Espaço JL se monta -->
 <div class="intro" aria-hidden="true">
-  <svg viewBox="0 0 120 200">
-    <path class="intro-arc" d="M104 22 C 126 92, 92 168, 18 180" fill="none" stroke="#3fd3a2" stroke-width="3" stroke-linecap="round"/>
-    <circle class="intro-dot" cx="60" cy="40" r="15" fill="#EEF2EC"/>
-    <circle class="intro-dot" cx="60" cy="76" r="9" fill="#3fd3a2"/>
-    <circle class="intro-dot" cx="60" cy="102" r="7.5" fill="#3fd3a2"/>
-    <circle class="intro-dot" cx="60" cy="124" r="6" fill="#3fd3a2"/>
-    <circle class="intro-dot" cx="60" cy="142" r="4.5" fill="#3fd3a2"/>
-  </svg>
-  <div class="intro-name">Jonas Lima<small>-Dor +Performance</small></div>
+  <svg class="intro-mark" viewBox="6 10 160 156"><defs><mask id="arcdraw" maskUnits="userSpaceOnUse" x="0" y="0" width="172" height="172"><path class="arc-line" d="M136.2 21.9 L142.3 25.9 L147.2 31.0 L150.8 37.2 L153.0 44.1 L153.8 51.9 L153.0 60.2 L150.8 68.9 L147.2 77.8 L142.3 86.8 L136.2 95.6 L128.9 104.1 L120.7 112.1 L111.6 119.5 L102.0 126.0 L92.0 131.6 L81.7 136.2 L71.5 139.5 L61.5 141.7 L51.9 142.6 L42.9 142.2 L34.8 140.6 L27.6 137.7 L21.5 133.6 L16.6 128.4 L13.1 122.2 L11.0 115.2 L10.4 107.4 L11.2 99.1 L13.5 90.4" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round"/></mask></defs><mask id="in-gap" maskUnits="userSpaceOnUse" x="0" y="0" width="172" height="172"><rect width="172" height="172" fill="#fff"/><path d="M136.2 21.9 L142.3 25.9 L147.2 31.0 L150.8 37.2 L153.0 44.1 L153.8 51.9 L153.0 60.2 L150.8 68.9 L147.2 77.8 L142.3 86.8 L136.2 95.6 L128.9 104.1 L120.7 112.1 L111.6 119.5 L102.0 126.0 L92.0 131.6 L81.7 136.2 L71.5 139.5 L61.5 141.7 L51.9 142.6 L42.9 142.2 L34.8 140.6 L27.6 137.7 L21.5 133.6 L16.6 128.4 L13.1 122.2 L11.0 115.2 L10.4 107.4 L11.2 99.1 L13.5 90.4" fill="none" stroke="#000" stroke-width="14"/></mask><circle class="m-head" cx="70.6" cy="33.8" r="13.8" fill="#0E8984"/><path class="m-body" mask="url(#in-gap)" fill-rule="evenodd" fill="#0E8984" d="M104 15 C 106 45, 102 95, 94 125 C 89 142, 82 153, 75.5 162 C 79 142, 82 115, 77 95 C 71 77, 58 64, 45 59 C 62 58, 76 54, 86 45 C 95 37, 101 26, 104 15 Z M87.2 63.2a4 4 0 1 0-8 0a4 4 0 1 0 8 0Z M90.4 76.8a3.6 3.6 0 1 0-7.2 0a3.6 3.6 0 1 0 7.2 0Z M92.4 92a3.2 3.2 0 1 0-6.4 0a3.2 3.2 0 1 0 6.4 0Z M92.8 106.8a2.4 2.4 0 1 0-4.8 0a2.4 2.4 0 1 0 4.8 0Z M90 120.8a1.6 1.6 0 1 0-3.2 0a1.6 1.6 0 1 0 3.2 0Z"/><path class="m-arc" mask="url(#arcdraw)" fill="#0E5A34" d="M136.2 21.9C136.5 22.1 137.7 22.9 138.4 23.4C139.2 24.0 139.9 24.5 140.5 25.1C141.2 25.7 141.8 26.3 142.4 26.9C143.0 27.5 143.6 28.1 144.1 28.8C144.7 29.5 145.2 30.2 145.6 30.9C146.1 31.6 146.5 32.3 146.9 33.0C147.3 33.8 147.6 34.5 147.9 35.3C148.2 36.0 148.5 36.8 148.8 37.6C149.0 38.4 149.2 39.2 149.4 40.0C149.6 40.8 149.7 41.6 149.8 42.5C149.9 43.3 150.0 44.1 150.1 45.0C150.1 45.9 150.3 46.7 150.3 47.6C150.4 48.4 150.4 49.3 150.4 50.2C150.4 51.1 150.4 52.0 150.3 52.9C150.3 53.8 150.2 54.8 150.1 55.7C149.9 56.6 149.8 57.6 149.6 58.6C149.4 59.5 149.2 60.5 149.0 61.5C148.8 62.5 148.5 63.5 148.2 64.4C147.9 65.4 147.6 66.5 147.2 67.5C146.9 68.5 146.5 69.5 146.1 70.5C145.7 71.5 145.2 72.6 144.8 73.6C144.3 74.6 143.8 75.7 143.3 76.7C142.7 77.8 142.2 78.8 141.6 79.8C141.0 80.9 140.4 81.9 139.8 83.0C139.1 84.0 138.5 85.0 137.8 86.1C137.1 87.1 136.4 88.1 135.6 89.2C134.9 90.2 134.1 91.2 133.3 92.2C132.6 93.3 131.7 94.3 130.9 95.3C130.1 96.3 129.2 97.3 128.3 98.3C127.5 99.3 126.5 100.3 125.6 101.2C124.7 102.2 123.8 103.2 122.8 104.1C121.8 105.1 120.8 106.0 119.8 107.0C118.8 107.9 117.8 108.8 116.8 109.7C115.8 110.6 114.7 111.5 113.6 112.4C112.6 113.2 111.5 114.1 110.4 115.0C109.3 115.8 108.2 116.6 107.1 117.4C106.0 118.2 104.8 119.0 103.7 119.8C102.5 120.6 101.4 121.3 100.2 122.0C99.1 122.8 97.9 123.5 96.7 124.2C95.5 124.9 94.3 125.5 93.2 126.2C92.0 126.8 90.8 127.5 89.6 128.1C88.4 128.7 87.2 129.2 86.0 129.8C84.8 130.3 83.6 130.9 82.4 131.4C81.2 131.9 79.9 132.4 78.7 132.8C77.5 133.3 76.3 133.7 75.1 134.1C73.9 134.6 72.7 134.9 71.5 135.3C70.4 135.7 69.2 136.0 68.0 136.3C66.8 136.6 65.6 136.9 64.5 137.1C63.3 137.4 62.2 137.6 61.0 137.8C59.9 138.0 58.7 138.2 57.6 138.3C56.5 138.4 55.4 138.6 54.3 138.7C53.2 138.8 52.1 138.8 51.0 138.8C50.0 138.9 48.9 138.9 47.9 138.9C46.8 138.8 45.8 138.8 44.8 138.7C43.8 138.7 42.8 138.6 41.9 138.4C40.9 138.3 39.9 138.2 39.0 138.0C38.1 137.8 37.2 137.6 36.3 137.4C35.4 137.2 34.5 136.9 33.7 136.6C32.9 136.4 32.0 136.1 31.2 135.7C30.4 135.4 29.7 135.1 28.9 134.7C28.2 134.3 27.4 133.9 26.8 133.5C26.1 133.1 25.4 132.7 24.7 132.2C24.1 131.7 23.4 131.2 22.8 130.7C22.2 130.2 21.6 129.7 21.1 129.1C20.5 128.6 20.0 128.0 19.5 127.4C19.0 126.8 18.5 126.2 18.1 125.5C17.6 124.9 17.2 124.2 16.8 123.5C16.4 122.8 16.0 122.1 15.7 121.4C15.3 120.7 14.9 120.0 14.5 119.2C14.2 118.5 13.9 117.7 13.6 116.9C13.3 116.1 13.0 115.2 12.8 114.4C12.6 113.5 12.3 112.7 12.2 111.8C12.0 110.9 11.9 109.9 11.8 109.0C11.7 108.1 11.6 107.1 11.6 106.1C11.5 105.2 11.5 104.2 11.6 103.1C11.6 102.1 11.7 101.1 11.8 100.1C11.8 99.0 12.0 98.0 12.2 96.9C12.3 95.8 12.5 94.8 12.7 93.7C12.9 92.6 13.3 90.9 13.5 90.4C13.6 89.8 13.7 89.8 13.5 90.4C13.2 90.9 12.6 92.5 12.2 93.5C11.8 94.6 11.5 95.6 11.2 96.7C10.9 97.7 10.6 98.8 10.3 99.8C10.1 100.9 9.9 101.9 9.7 103.0C9.5 104.0 9.3 105.0 9.2 106.0C9.1 107.0 9.0 108.1 9.0 109.1C8.9 110.1 8.9 111.1 8.9 112.1C8.9 113.1 9.0 114.0 9.1 115.0C9.2 116.0 9.3 117.0 9.4 117.9C9.6 118.9 9.8 119.8 10.0 120.8C10.2 121.7 10.4 122.6 10.8 123.5C11.1 124.4 11.5 125.3 11.9 126.1C12.4 127.0 12.8 127.8 13.3 128.6C13.8 129.4 14.4 130.2 14.9 131.0C15.5 131.7 16.1 132.5 16.7 133.2C17.4 133.9 18.1 134.6 18.7 135.2C19.4 135.9 20.2 136.6 20.9 137.2C21.7 137.8 22.5 138.3 23.3 138.9C24.1 139.4 25.0 140.0 25.9 140.5C26.7 141.0 27.6 141.4 28.6 141.8C29.5 142.3 30.4 142.7 31.4 143.1C32.4 143.4 33.4 143.8 34.4 144.1C35.4 144.4 36.5 144.7 37.5 144.9C38.6 145.2 39.7 145.4 40.8 145.6C41.9 145.8 43.0 145.9 44.1 146.1C45.3 146.2 46.4 146.3 47.6 146.3C48.8 146.4 50.0 146.4 51.1 146.4C52.3 146.4 53.6 146.4 54.8 146.3C56.0 146.3 57.2 146.2 58.5 146.1C59.7 145.9 61.0 145.8 62.2 145.6C63.5 145.4 64.8 145.2 66.1 145.0C67.3 144.7 68.6 144.4 69.9 144.2C71.2 143.8 72.5 143.5 73.8 143.2C75.1 142.8 76.4 142.4 77.7 142.0C79.0 141.6 80.3 141.1 81.6 140.7C82.9 140.2 84.2 139.7 85.5 139.2C86.9 138.6 88.2 138.1 89.5 137.5C90.8 136.9 92.1 136.3 93.3 135.7C94.7 135.1 95.9 134.4 97.2 133.7C98.5 133.1 99.8 132.4 101.0 131.6C102.3 130.9 103.6 130.2 104.8 129.4C106.0 128.6 107.3 127.8 108.5 127.0C109.7 126.2 111.0 125.4 112.2 124.5C113.3 123.7 114.5 122.8 115.7 121.9C116.9 121.0 118.0 120.1 119.2 119.1C120.3 118.2 121.4 117.3 122.5 116.3C123.6 115.3 124.7 114.3 125.8 113.3C126.9 112.3 127.9 111.3 128.9 110.3C130.0 109.3 131.0 108.2 131.9 107.2C132.9 106.1 133.9 105.1 134.8 104.0C135.8 102.9 136.7 101.8 137.6 100.7C138.4 99.7 139.3 98.5 140.1 97.4C141.0 96.3 141.8 95.2 142.6 94.1C143.3 92.9 144.1 91.8 144.8 90.7C145.6 89.5 146.2 88.4 146.9 87.2C147.6 86.1 148.2 84.9 148.8 83.7C149.4 82.6 150.0 81.4 150.6 80.3C151.1 79.1 151.6 78.0 152.1 76.8C152.6 75.6 153.0 74.5 153.4 73.3C153.8 72.2 154.2 71.0 154.6 69.8C154.9 68.7 155.2 67.5 155.5 66.4C155.8 65.3 156.0 64.1 156.2 63.0C156.5 61.9 156.6 60.8 156.8 59.6C156.9 58.5 157.0 57.4 157.1 56.3C157.1 55.2 157.2 54.2 157.2 53.1C157.2 52.0 157.1 51.0 157.0 49.9C156.9 48.9 156.8 47.9 156.7 46.8C156.5 45.8 156.4 44.8 156.1 43.9C155.8 42.9 155.5 42.0 155.1 41.0C154.7 40.1 154.3 39.2 153.9 38.4C153.5 37.5 153.0 36.7 152.5 35.9C152.1 35.1 151.5 34.3 151.0 33.5C150.4 32.8 149.9 32.1 149.3 31.4C148.7 30.7 148.1 30.0 147.4 29.4C146.8 28.7 146.1 28.1 145.4 27.5C144.8 27.0 144.0 26.4 143.3 25.9C142.6 25.4 141.8 24.9 141.1 24.4C140.3 23.9 139.5 23.5 138.7 23.1C137.8 22.6 136.6 22.1 136.2 21.9C135.7 21.7 135.8 21.6 136.2 21.9Z"/></svg><svg class="intro-word" viewBox="-2 -2 967 118"><g fill="none" stroke="#0E5A34" stroke-width="18" stroke-linejoin="round"><path class="w-l" d="M97 9 H27 Q9 9 9 27 V73 Q9 91 27 91 H97 M9 50 H84"/><path class="w-l" d="M213 9 H140 Q120 9 120 29.5 Q120 50 140 50 H184 Q204 50 204 70.5 Q204 91 184 91 H111"/><path class="w-l" d="M236 100 V9 H290 Q310 9 310 29 V37 Q310 57 290 57 H236"/><path class="w-l" d="M326 100 L369 14 Q375 3 381 14 L424 100"/><path class="w-l" d="M551 9 H467 Q449 9 449 27 V73 Q449 91 467 91 H551"/><path class="w-l" d="M613 9 H660 Q695 9 695 44 V56 Q695 91 660 91 H613 Q578 91 578 56 V44 Q578 9 613 9 Z"/><path class="w-l" d="M759 91 H808 Q838 91 838 61 V0"/><path class="w-l" d="M879 0 V61 Q879 91 909 91 H963"/></g><path class="w-ced" fill="#0E5A34" d="M492 100 L500 100 L497 114 L492 114Z"/></svg>
+  <div class="intro-name">Terapias Manuais</div>
+</div>
 </div>
 
 <header class="nav" id="nav">
-  <a class="brand" href="#topo" aria-label="Jonas Lima, início"><span class="spine" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Jonas Lima</a>
+  <a class="brand" href="#topo" aria-label="Espaço JL Terapias Manuais, início"><svg class="brand-mark" aria-hidden="true"><use href="#jl-mark"/></svg><span class="brand-txt" aria-hidden="true"><svg class="brand-word"><use href="#jl-word"/></svg><span class="brand-sub">Terapias Manuais</span></span></a>
   <nav aria-label="Principal">
     <ul>
       <li><a href="#metodo">Método JL</a></li>
@@ -466,7 +462,7 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
   </div>
   <div class="wrap">
     <blockquote id="manifesto">Técnica não é força. Técnica é saber quanto, onde e quando aplicar o estímulo certo.</blockquote>
-    <cite><span class="spine" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Jonas Lima, atleta há 24 anos <span class="confirmar">CONFIRMAR</span></cite>
+    <cite><span class="spine" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Jonas Lima, atleta há 24 anos</cite>
   </div>
 </section>
 
@@ -523,7 +519,7 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
     </div>
 
     <div class="ciclo reveal">
-      <p><strong>Ciclo de 30 dias</strong>O objetivo não é só silenciar o sintoma, é devolver sua autonomia e sua performance. Por isso o Método JL acontece em ciclo, com reavaliação a cada etapa. <span class="confirmar">CONFIRMAR número de sessões</span></p>
+      <p><strong>Ciclo de 30 dias</strong>O objetivo não é só silenciar o sintoma, é devolver sua autonomia e sua performance. Por isso o Método JL acontece em ciclo, com reavaliação a cada etapa.</p>
       <a class="btn magnetic wa-link" href="#" data-msg="ciclo">Quero começar o ciclo</a>
     </div>
   </div>
@@ -560,7 +556,7 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
         <div><h3>Mandíbula (DTM)</h3><p>Tensão no masseter e no temporal que vira dor de cabeça e estalo ao mastigar.</p></div>
       </article>
       <article class="tile tile--deep t-4 reveal">
-        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true" style="stroke:#3fd3a2"><circle cx="30" cy="9" r="4"/><path d="M12 22l8-6 8 4 6 8M20 16l-4 14-8 8M28 20l-2 10 8 10"/></svg>
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true" style="stroke:#4FC7BC"><circle cx="30" cy="9" r="4"/><path d="M12 22l8-6 8 4 6 8M20 16l-4 14-8 8M28 20l-2 10 8 10"/></svg>
         <div><h3>Recuperação de treino e prova</h3><p>A dois dias de uma competição, errar a pressão é um erro caro. A abordagem muda conforme o calendário de cada atleta.</p></div>
       </article>
     </div>
@@ -589,7 +585,7 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
       </article>
       <article class="tile tile--forest t-2 reveal">
         <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="18" y="6" width="12" height="7" rx="3"/><rect x="18" y="16" width="12" height="7" rx="3"/><rect x="18" y="26" width="12" height="7" rx="3"/><rect x="18" y="36" width="12" height="6" rx="3"/></svg>
-        <div><h3>Ajustes articulares</h3><p>Técnicas para a articulação voltar a se mover melhor, sempre depois de regular o tônus. <span class="confirmar">CONFIRMAR nome</span></p></div>
+        <div><h3>Ajustes articulares</h3><p>Técnicas para a articulação voltar a se mover melhor, sempre depois de regular o tônus.</p></div>
       </article>
       <article class="tile t-2 reveal">
         <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="9" r="4"/><path d="M24 14v26M18 20h12M17 27h14M18 34h12"/></svg>
@@ -643,8 +639,8 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
         <p class="reveal" style="max-width:46ch">Sou Tecnólogo em Massoterapia e acadêmico de Fisioterapia. Minha busca nunca foi acumular certificados. É entender melhor o corpo, o movimento, a dor e as possibilidades da terapia manual.</p>
         <div class="stats">
           <div class="stat"><b><span class="odo" data-to="1640" data-sep="1">1.640</span></b><span>horas de formação em massoterapia</span></div>
-          <div class="stat"><b><span class="odo" data-to="24">24</span></b><span>anos como atleta <span class="confirmar">CONFIRMAR</span></span></div>
-          <div class="stat"><b><span class="odo" data-to="2016">2016</span></b><span>primeiros Jogos Paralímpicos como guia <span class="confirmar">CONFIRMAR</span></span></div>
+          <div class="stat"><b><span class="odo" data-to="24">24</span></b><span>anos como atleta</span></div>
+          <div class="stat"><b><span class="odo" data-to="2016">2016</span></b><span>primeiros Jogos Paralímpicos como guia</span></div>
         </div>
         <a class="btn magnetic wa-link" href="#" data-msg="geral"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#wa-icon"/></svg>Agendar avaliação comigo</a>
       </div>
@@ -654,7 +650,7 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
       <img src="/img/04-atleta-guia-1600.webp?v=2" srcset="/img/04-atleta-guia-800.webp?v=2 800w, /img/04-atleta-guia-1600.webp?v=2 1356w" sizes="100vw" width="1356" height="1159" alt="Jonas Lima com o colete de atleta guia, correndo ao lado de um velocista do Brasil nos Jogos Paralímpicos de Paris 2024" loading="lazy">
       <figcaption>
         <div class="display">Na pista, performance é <em>sincronia</em>.</div>
-        <p>Jonas como atleta guia nos Jogos Paralímpicos de Paris 2024. Na maca da JL também passam atletas paralímpicos em preparação para competições internacionais. <span class="confirmar">CONFIRMAR</span></p>
+        <p>Jonas como atleta guia nos Jogos Paralímpicos de Paris 2024. Na maca da JL também passam atletas paralímpicos em preparação para competições internacionais.</p>
       </figcaption>
     </figure>
   </div>
@@ -678,7 +674,7 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
       </figure>
       <div class="txt reveal">
         <h3 style="margin-bottom:.8rem">Dois atletas na equipe</h3>
-        <p>Newton Júnior é massoterapeuta clínico, atleta de alto rendimento e especialista em dores musculares e recuperação esportiva. <span class="confirmar">CONFIRMAR quem atende em cada cidade</span></p>
+        <p>Newton Júnior é massoterapeuta clínico, atleta de alto rendimento e especialista em dores musculares e recuperação esportiva.</p>
       </div>
     </div>
   </div>
@@ -689,7 +685,7 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
   <div class="wrap reviews">
     <div class="score">
       <b><span class="odo" data-to="5" data-dec="1">5,0</span></b>
-      <p class="reveal">Nota no Google da unidade de Natal, com 5 avaliações. <span class="confirmar">CONFIRMAR uso das avaliações</span></p>
+      <p class="reveal">Nota no Google da unidade de Natal, com 5 avaliações.</p>
       <a class="link reveal" href="https://www.google.com/maps/search/?api=1&query=JL+Terapias+Manuais+Natal" target="_blank" rel="noopener">Ver no Google</a>
     </div>
     <div class="review-list">
@@ -701,7 +697,7 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
 </section>
 
 <!-- MENTORIAS -->
-<section class="sec is-dark" data-bg="#1B4334">
+<section class="sec is-dark" data-bg="#0F4A30">
   <div class="wrap mentoria">
     <figure class="reveal-mask"><img src="/img/12-mentoria-1600.webp?v=2" srcset="/img/12-mentoria-800.webp?v=2 800w, /img/12-mentoria-1600.webp?v=2 941w" sizes="(max-width:860px) 92vw, 440px" width="941" height="1672" alt="Jonas apresentando a Mentoria Método JL" loading="lazy"></figure>
     <div>
@@ -765,7 +761,8 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
 <footer class="site is-dark" data-bg="#03241A">
   <div class="wrap">
     <div>
-      <h4>Espaço JL Terapias Manuais</h4>
+      <svg class="foot-logo" role="img" aria-label="Espaço JL Terapias Manuais" viewBox="0 0 400 66"><svg width="70" height="66"><use href="#jl-mark"/></svg><svg x="86" y="12" width="300" height="38" viewBox="-2 -2 967 118"><use href="#jl-word"/></svg></svg>
+      <p class="foot-sub">Terapias Manuais</p>
       <p>Jonas Lima, Tecnólogo em Massoterapia</p>
       <p><a href="https://www.instagram.com/jonaslima.massoterapia/" target="_blank" rel="noopener">Instagram @jonaslima.massoterapia</a></p>
       <p><a class="wa-link" href="#" data-msg="geral">WhatsApp (11) 91510-5180</a></p>
@@ -787,6 +784,8 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
 </a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="jl-mark" viewBox="6 10 160 156"><mask id="sym-gap" maskUnits="userSpaceOnUse" x="0" y="0" width="172" height="172"><rect width="172" height="172" fill="#fff"/><path d="M136.2 21.9 L142.3 25.9 L147.2 31.0 L150.8 37.2 L153.0 44.1 L153.8 51.9 L153.0 60.2 L150.8 68.9 L147.2 77.8 L142.3 86.8 L136.2 95.6 L128.9 104.1 L120.7 112.1 L111.6 119.5 L102.0 126.0 L92.0 131.6 L81.7 136.2 L71.5 139.5 L61.5 141.7 L51.9 142.6 L42.9 142.2 L34.8 140.6 L27.6 137.7 L21.5 133.6 L16.6 128.4 L13.1 122.2 L11.0 115.2 L10.4 107.4 L11.2 99.1 L13.5 90.4" fill="none" stroke="#000" stroke-width="14"/></mask><circle cx="70.6" cy="33.8" r="13.8" style="fill:var(--mk-a,#0E8984)"/><path mask="url(#sym-gap)" fill-rule="evenodd" style="fill:var(--mk-a,#0E8984)" d="M104 15 C 106 45, 102 95, 94 125 C 89 142, 82 153, 75.5 162 C 79 142, 82 115, 77 95 C 71 77, 58 64, 45 59 C 62 58, 76 54, 86 45 C 95 37, 101 26, 104 15 Z M87.2 63.2a4 4 0 1 0-8 0a4 4 0 1 0 8 0Z M90.4 76.8a3.6 3.6 0 1 0-7.2 0a3.6 3.6 0 1 0 7.2 0Z M92.4 92a3.2 3.2 0 1 0-6.4 0a3.2 3.2 0 1 0 6.4 0Z M92.8 106.8a2.4 2.4 0 1 0-4.8 0a2.4 2.4 0 1 0 4.8 0Z M90 120.8a1.6 1.6 0 1 0-3.2 0a1.6 1.6 0 1 0 3.2 0Z"/><path style="fill:var(--mk-b,#0E5A34)" d="M136.2 21.9C136.5 22.1 137.7 22.9 138.4 23.4C139.2 24.0 139.9 24.5 140.5 25.1C141.2 25.7 141.8 26.3 142.4 26.9C143.0 27.5 143.6 28.1 144.1 28.8C144.7 29.5 145.2 30.2 145.6 30.9C146.1 31.6 146.5 32.3 146.9 33.0C147.3 33.8 147.6 34.5 147.9 35.3C148.2 36.0 148.5 36.8 148.8 37.6C149.0 38.4 149.2 39.2 149.4 40.0C149.6 40.8 149.7 41.6 149.8 42.5C149.9 43.3 150.0 44.1 150.1 45.0C150.1 45.9 150.3 46.7 150.3 47.6C150.4 48.4 150.4 49.3 150.4 50.2C150.4 51.1 150.4 52.0 150.3 52.9C150.3 53.8 150.2 54.8 150.1 55.7C149.9 56.6 149.8 57.6 149.6 58.6C149.4 59.5 149.2 60.5 149.0 61.5C148.8 62.5 148.5 63.5 148.2 64.4C147.9 65.4 147.6 66.5 147.2 67.5C146.9 68.5 146.5 69.5 146.1 70.5C145.7 71.5 145.2 72.6 144.8 73.6C144.3 74.6 143.8 75.7 143.3 76.7C142.7 77.8 142.2 78.8 141.6 79.8C141.0 80.9 140.4 81.9 139.8 83.0C139.1 84.0 138.5 85.0 137.8 86.1C137.1 87.1 136.4 88.1 135.6 89.2C134.9 90.2 134.1 91.2 133.3 92.2C132.6 93.3 131.7 94.3 130.9 95.3C130.1 96.3 129.2 97.3 128.3 98.3C127.5 99.3 126.5 100.3 125.6 101.2C124.7 102.2 123.8 103.2 122.8 104.1C121.8 105.1 120.8 106.0 119.8 107.0C118.8 107.9 117.8 108.8 116.8 109.7C115.8 110.6 114.7 111.5 113.6 112.4C112.6 113.2 111.5 114.1 110.4 115.0C109.3 115.8 108.2 116.6 107.1 117.4C106.0 118.2 104.8 119.0 103.7 119.8C102.5 120.6 101.4 121.3 100.2 122.0C99.1 122.8 97.9 123.5 96.7 124.2C95.5 124.9 94.3 125.5 93.2 126.2C92.0 126.8 90.8 127.5 89.6 128.1C88.4 128.7 87.2 129.2 86.0 129.8C84.8 130.3 83.6 130.9 82.4 131.4C81.2 131.9 79.9 132.4 78.7 132.8C77.5 133.3 76.3 133.7 75.1 134.1C73.9 134.6 72.7 134.9 71.5 135.3C70.4 135.7 69.2 136.0 68.0 136.3C66.8 136.6 65.6 136.9 64.5 137.1C63.3 137.4 62.2 137.6 61.0 137.8C59.9 138.0 58.7 138.2 57.6 138.3C56.5 138.4 55.4 138.6 54.3 138.7C53.2 138.8 52.1 138.8 51.0 138.8C50.0 138.9 48.9 138.9 47.9 138.9C46.8 138.8 45.8 138.8 44.8 138.7C43.8 138.7 42.8 138.6 41.9 138.4C40.9 138.3 39.9 138.2 39.0 138.0C38.1 137.8 37.2 137.6 36.3 137.4C35.4 137.2 34.5 136.9 33.7 136.6C32.9 136.4 32.0 136.1 31.2 135.7C30.4 135.4 29.7 135.1 28.9 134.7C28.2 134.3 27.4 133.9 26.8 133.5C26.1 133.1 25.4 132.7 24.7 132.2C24.1 131.7 23.4 131.2 22.8 130.7C22.2 130.2 21.6 129.7 21.1 129.1C20.5 128.6 20.0 128.0 19.5 127.4C19.0 126.8 18.5 126.2 18.1 125.5C17.6 124.9 17.2 124.2 16.8 123.5C16.4 122.8 16.0 122.1 15.7 121.4C15.3 120.7 14.9 120.0 14.5 119.2C14.2 118.5 13.9 117.7 13.6 116.9C13.3 116.1 13.0 115.2 12.8 114.4C12.6 113.5 12.3 112.7 12.2 111.8C12.0 110.9 11.9 109.9 11.8 109.0C11.7 108.1 11.6 107.1 11.6 106.1C11.5 105.2 11.5 104.2 11.6 103.1C11.6 102.1 11.7 101.1 11.8 100.1C11.8 99.0 12.0 98.0 12.2 96.9C12.3 95.8 12.5 94.8 12.7 93.7C12.9 92.6 13.3 90.9 13.5 90.4C13.6 89.8 13.7 89.8 13.5 90.4C13.2 90.9 12.6 92.5 12.2 93.5C11.8 94.6 11.5 95.6 11.2 96.7C10.9 97.7 10.6 98.8 10.3 99.8C10.1 100.9 9.9 101.9 9.7 103.0C9.5 104.0 9.3 105.0 9.2 106.0C9.1 107.0 9.0 108.1 9.0 109.1C8.9 110.1 8.9 111.1 8.9 112.1C8.9 113.1 9.0 114.0 9.1 115.0C9.2 116.0 9.3 117.0 9.4 117.9C9.6 118.9 9.8 119.8 10.0 120.8C10.2 121.7 10.4 122.6 10.8 123.5C11.1 124.4 11.5 125.3 11.9 126.1C12.4 127.0 12.8 127.8 13.3 128.6C13.8 129.4 14.4 130.2 14.9 131.0C15.5 131.7 16.1 132.5 16.7 133.2C17.4 133.9 18.1 134.6 18.7 135.2C19.4 135.9 20.2 136.6 20.9 137.2C21.7 137.8 22.5 138.3 23.3 138.9C24.1 139.4 25.0 140.0 25.9 140.5C26.7 141.0 27.6 141.4 28.6 141.8C29.5 142.3 30.4 142.7 31.4 143.1C32.4 143.4 33.4 143.8 34.4 144.1C35.4 144.4 36.5 144.7 37.5 144.9C38.6 145.2 39.7 145.4 40.8 145.6C41.9 145.8 43.0 145.9 44.1 146.1C45.3 146.2 46.4 146.3 47.6 146.3C48.8 146.4 50.0 146.4 51.1 146.4C52.3 146.4 53.6 146.4 54.8 146.3C56.0 146.3 57.2 146.2 58.5 146.1C59.7 145.9 61.0 145.8 62.2 145.6C63.5 145.4 64.8 145.2 66.1 145.0C67.3 144.7 68.6 144.4 69.9 144.2C71.2 143.8 72.5 143.5 73.8 143.2C75.1 142.8 76.4 142.4 77.7 142.0C79.0 141.6 80.3 141.1 81.6 140.7C82.9 140.2 84.2 139.7 85.5 139.2C86.9 138.6 88.2 138.1 89.5 137.5C90.8 136.9 92.1 136.3 93.3 135.7C94.7 135.1 95.9 134.4 97.2 133.7C98.5 133.1 99.8 132.4 101.0 131.6C102.3 130.9 103.6 130.2 104.8 129.4C106.0 128.6 107.3 127.8 108.5 127.0C109.7 126.2 111.0 125.4 112.2 124.5C113.3 123.7 114.5 122.8 115.7 121.9C116.9 121.0 118.0 120.1 119.2 119.1C120.3 118.2 121.4 117.3 122.5 116.3C123.6 115.3 124.7 114.3 125.8 113.3C126.9 112.3 127.9 111.3 128.9 110.3C130.0 109.3 131.0 108.2 131.9 107.2C132.9 106.1 133.9 105.1 134.8 104.0C135.8 102.9 136.7 101.8 137.6 100.7C138.4 99.7 139.3 98.5 140.1 97.4C141.0 96.3 141.8 95.2 142.6 94.1C143.3 92.9 144.1 91.8 144.8 90.7C145.6 89.5 146.2 88.4 146.9 87.2C147.6 86.1 148.2 84.9 148.8 83.7C149.4 82.6 150.0 81.4 150.6 80.3C151.1 79.1 151.6 78.0 152.1 76.8C152.6 75.6 153.0 74.5 153.4 73.3C153.8 72.2 154.2 71.0 154.6 69.8C154.9 68.7 155.2 67.5 155.5 66.4C155.8 65.3 156.0 64.1 156.2 63.0C156.5 61.9 156.6 60.8 156.8 59.6C156.9 58.5 157.0 57.4 157.1 56.3C157.1 55.2 157.2 54.2 157.2 53.1C157.2 52.0 157.1 51.0 157.0 49.9C156.9 48.9 156.8 47.9 156.7 46.8C156.5 45.8 156.4 44.8 156.1 43.9C155.8 42.9 155.5 42.0 155.1 41.0C154.7 40.1 154.3 39.2 153.9 38.4C153.5 37.5 153.0 36.7 152.5 35.9C152.1 35.1 151.5 34.3 151.0 33.5C150.4 32.8 149.9 32.1 149.3 31.4C148.7 30.7 148.1 30.0 147.4 29.4C146.8 28.7 146.1 28.1 145.4 27.5C144.8 27.0 144.0 26.4 143.3 25.9C142.6 25.4 141.8 24.9 141.1 24.4C140.3 23.9 139.5 23.5 138.7 23.1C137.8 22.6 136.6 22.1 136.2 21.9C135.7 21.7 135.8 21.6 136.2 21.9Z"/></symbol>
+  <symbol id="jl-word" viewBox="-2 -2 967 118"><g fill="none" style="stroke:var(--mk-w,#0E5A34)" stroke-width="18" stroke-linejoin="round"><path d="M97 9 H27 Q9 9 9 27 V73 Q9 91 27 91 H97 M9 50 H84"/><path d="M213 9 H140 Q120 9 120 29.5 Q120 50 140 50 H184 Q204 50 204 70.5 Q204 91 184 91 H111"/><path d="M236 100 V9 H290 Q310 9 310 29 V37 Q310 57 290 57 H236"/><path d="M326 100 L369 14 Q375 3 381 14 L424 100"/><path d="M551 9 H467 Q449 9 449 27 V73 Q449 91 467 91 H551"/><path d="M613 9 H660 Q695 9 695 44 V56 Q695 91 660 91 H613 Q578 91 578 56 V44 Q578 9 613 9 Z"/><path d="M759 91 H808 Q838 91 838 61 V0"/><path d="M879 0 V61 Q879 91 909 91 H963"/></g><path style="fill:var(--mk-w,#0E5A34)" d="M492 100 L500 100 L497 114 L492 114Z"/></symbol>
   <symbol id="wa-icon" viewBox="0 0 32 32"><path fill="currentColor" d="M16.04 3C9.02 3 3.3 8.7 3.3 15.72c0 2.24.59 4.43 1.71 6.36L3.2 28.8l6.9-1.79a12.72 12.72 0 0 0 5.93 1.5h.01c7.02 0 12.74-5.7 12.74-12.72 0-3.4-1.32-6.6-3.73-9A12.66 12.66 0 0 0 16.04 3zm0 23.36h-.01a10.6 10.6 0 0 1-5.39-1.47l-.39-.23-4.1 1.06 1.1-3.99-.25-.41a10.54 10.54 0 0 1-1.62-5.6c0-5.84 4.76-10.59 10.62-10.59 2.83 0 5.5 1.1 7.5 3.1a10.5 10.5 0 0 1 3.1 7.5c0 5.85-4.76 10.6-10.56 10.6zm5.82-7.93c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.72.16-.21.32-.82 1.04-1 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.58a9.6 9.6 0 0 1-1.78-2.2c-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.72-.98-2.36-.26-.62-.52-.53-.72-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65s1.14 3.07 1.3 3.28c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.89-.77 2.15-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37z"/></symbol>
 </svg>
 
@@ -850,17 +849,23 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
     gsap.ticker.lagSmoothing(0);
     document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(e){ var id=a.getAttribute('href'); if(id.length>1){ var t=document.querySelector(id); if(t){ e.preventDefault(); lenis.scrollTo(t,{offset:-70}); } } }); });
 
-    /* ABERTURA: a coluna se alinha */
+    /* ABERTURA: a logo se monta */
     var heroW=gsap.utils.toArray('.hero h1 .w');
     var tl=gsap.timeline({defaults:{ease:E},onComplete:function(){ killIntro(); lenis.start(); }});
-    var dots=gsap.utils.toArray('.intro-dot'); var arc=document.querySelector('.intro-arc'); var len=arc.getTotalLength();
-    gsap.set(arc,{strokeDasharray:len,strokeDashoffset:len});
-    gsap.set(dots,{x:function(i){return [-38,26,-20,34,-16][i]},y:function(i){return [-30,22,-14,18,-24][i]},opacity:0,transformOrigin:'50% 50%'});
+    var arcLine=document.querySelector('.arc-line'); var al=arcLine.getTotalLength();
+    var letters=gsap.utils.toArray('.intro-word .w-l');
+    gsap.set(arcLine,{strokeDasharray:al,strokeDashoffset:al});
+    letters.forEach(function(l){ var n=l.getTotalLength(); gsap.set(l,{strokeDasharray:n,strokeDashoffset:n}); });
+    gsap.set('.m-head',{opacity:0,y:-26,transformOrigin:'50% 50%'});
+    gsap.set('.m-body',{opacity:0,scaleY:.2,transformOrigin:'50% 100%'});
+    gsap.set('.w-ced',{opacity:0});
     gsap.set('.hero-visual',{opacity:0,scale:.94,y:30});
-    tl.to(dots,{opacity:1,duration:.3,stagger:.05,ease:'none'})
-      .to(dots,{x:0,y:0,duration:.9,stagger:.06},'<.1')
-      .to(arc,{strokeDashoffset:0,duration:.7,ease:'power2.inOut'},'-=.45')
-      .to('.intro-name',{opacity:1,y:-8,duration:.6},'-=.35')
+    tl.to('.m-body',{opacity:1,scaleY:1,duration:.8,ease:'expo.out'})
+      .to('.m-head',{opacity:1,y:0,duration:.7,ease:'back.out(2)'},'-=.45')
+      .to(arcLine,{strokeDashoffset:0,duration:.8,ease:'power2.inOut'},'-=.5')
+      .to(letters,{strokeDashoffset:0,duration:.7,stagger:.05,ease:'power2.out'},'-=.55')
+      .to('.w-ced',{opacity:1,duration:.3},'-=.3')
+      .to('.intro-name',{opacity:1,y:-6,duration:.5},'-=.35')
       .to(intro,{clipPath:'inset(0 0 100% 0)',duration:.6,ease:'expo.inOut'},'+=.15')
       .to('.hero-visual',{opacity:1,scale:1,y:0,duration:1.2},'-=.35')
       .to(heroW,{opacity:1,y:0,scaleY:1,duration:.9,stagger:.05},'<.1')
