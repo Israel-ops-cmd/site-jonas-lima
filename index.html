@@ -260,7 +260,7 @@ section{position:relative}
 .stat b{display:block;font-family:Archivo,sans-serif;font-stretch:118%;font-weight:300;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1;letter-spacing:-.03em;color:var(--forest)}
 .stat > span{font-size:1rem;color:#425048;display:block;margin-top:.5rem}
 .fullbleed{margin-top:clamp(4rem,9vw,8rem);position:relative;height:min(92vh,820px);overflow:hidden;border-radius:var(--radius);clip-path:inset(0 0 0 0 round var(--radius))}
-.fullbleed img{width:100%;height:118%;object-fit:cover;object-position:60% 40%}
+.fullbleed img{width:100%;height:100%;object-fit:cover;object-position:50% 0%}
 .fullbleed figcaption{position:absolute;left:0;right:0;bottom:0;padding:clamp(1.5rem,4vw,3rem);color:#fff;background:linear-gradient(180deg,transparent,rgba(3,36,26,.85));display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap}
 .fullbleed figcaption p{margin:0;max-width:36ch;font-size:1.15rem}
 .fullbleed figcaption .display{font-size:clamp(1.8rem,3.6vw,3rem);max-width:16ch}
@@ -350,7 +350,9 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
   .tile--photo{min-height:380px}
   .sobre-visual{max-width:330px;margin:2rem auto 0}
   .stats{grid-template-columns:1fr 1fr}
-  .fullbleed{height:70vh}
+  .fullbleed{height:auto;background:var(--deep)}
+  .fullbleed img{height:auto;aspect-ratio:1;object-position:55% 0%}
+  .fullbleed figcaption{position:static;background:var(--deep);padding-top:1.25rem}
   .espaco .equipe{min-height:520px;grid-row:auto}
   .final .spine{display:none}
   footer.site .wrap{grid-template-columns:1fr}
@@ -937,8 +939,8 @@ footer.site .legal{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);p
     });
 
     /* foto do atleta guia cresce até ocupar a tela */
-    gsap.fromTo('#guia',{clipPath:'inset(8% 14% 8% 14% round 28px)'},{clipPath:'inset(0% 0% 0% 0% round 28px)',ease:'none',scrollTrigger:{trigger:'#guia',start:'top 90%',end:'top 20%',scrub:true}});
-    gsap.fromTo('#guia img',{yPercent:-8},{yPercent:0,ease:'none',scrollTrigger:{trigger:'#guia',start:'top bottom',end:'bottom top',scrub:true}});
+    gsap.fromTo('#guia',{clipPath:'inset(3% 12% 8% 12% round 28px)'},{clipPath:'inset(0% 0% 0% 0% round 28px)',ease:'none',scrollTrigger:{trigger:'#guia',start:'top 90%',end:'top 20%',scrub:true}});
+    gsap.fromTo('#guia img',{scale:1.08},{scale:1,transformOrigin:'50% 0%',ease:'none',scrollTrigger:{trigger:'#guia',start:'top bottom',end:'bottom top',scrub:true}});
 
     /* desktop: cursor discreto e botões magnéticos */
     if(isDesk){
